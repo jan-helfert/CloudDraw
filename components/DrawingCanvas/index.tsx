@@ -253,28 +253,29 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
               {/* ── CURRENT STROKE (live, 60fps) ──
                   Eraser:  Paint child with blendMode="clear" ✅
                   Brush:   animated color from derived value   ✅ */}
-              {svIsEraser.value ? (
-                <Path
-                  path={currentPath}
-                  style="stroke"
-                  strokeWidth={currentStrokeWidth}
-                  strokeCap="round"
-                  strokeJoin="round"
-                  antiAlias={true}
-                >
-                  <Paint blendMode="clear" />
-                </Path>
-              ) : (
-                <Path
-                  path={currentPath}
-                  color={currentColor}
-                  style="stroke"
-                  strokeWidth={currentStrokeWidth}
-                  strokeCap="round"
-                  strokeJoin="round"
-                  antiAlias={true}
-                />
-              )}
+{activeTool === 'eraser' ? (
+  <Path
+    path={currentPath}
+    style="stroke"
+    strokeWidth={currentStrokeWidth}
+    strokeCap="round"
+    strokeJoin="round"
+    antiAlias={true}
+  >
+    <Paint blendMode="clear" />
+  </Path>
+) : (
+  <Path
+    path={currentPath}
+    color={currentColor}
+    style="stroke"
+    strokeWidth={currentStrokeWidth}
+    strokeCap="round"
+    strokeJoin="round"
+    antiAlias={true}
+  />
+)}
+
 
             </Group>
           </Canvas>
