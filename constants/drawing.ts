@@ -19,4 +19,4 @@ export const BRUSH_SIZES = [3, 6, 12, 20, 30];
 
 export const DEFAULT_COLOR = '#000000';
 export const DEFAULT_BRUSH_SIZE = 6;
-export const DEFAULT_ERASER_SIZE = 30;
+// DEFAULT_ERASER_SIZE REMOVED

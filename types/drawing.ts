@@ -1,14 +1,14 @@
 // types/drawing.ts
 import { SkPath } from '@shopify/react-native-skia';
-import { ImageSourcePropType } from 'react-native'; 
+import { ImageSourcePropType } from 'react-native';
 
-export type DrawingTool = 'brush' | 'eraser';
+export type DrawingTool = 'brush';  // only brush now
 
 export interface Stroke {
   path: SkPath;
   color: string;
   strokeWidth: number;
-  isEraser: boolean;
+  // isEraser REMOVED
 }
 
 export interface DrawingCanvasProps {

@@ -9,13 +9,12 @@ import { PALETTE_COLORS } from '../../constants/drawing';
 
 interface ColorPickerProps {
   selectedColor: string;
-  isEraser: boolean;
+  // isEraser REMOVED
   onColorSelect: (color: string) => void;
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
   selectedColor,
-  isEraser,
   onColorSelect,
 }) => {
   return (
@@ -32,7 +31,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
           style={[
             styles.dot,
             { backgroundColor: color },
-            !isEraser && selectedColor === color && styles.selectedDot,
+            selectedColor === color && styles.selectedDot,
             color === '#FFFFFF' && styles.whiteDot,
           ]}
         />

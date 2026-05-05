@@ -7,25 +7,21 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import { DrawingTool } from '../../types/drawing';
 import { BRUSH_SIZES } from '../../constants/drawing';
 
 interface ToolbarProps {
-  activeTool: DrawingTool;
   brushSize: number;
   canUndo: boolean;
-  onToolChange: (tool: DrawingTool) => void;
   onSizeChange: (size: number) => void;
   onUndo: () => void;
   onClear: () => void;
   onSubmit: () => void;
+  // activeTool, onToolChange REMOVED
 }
 
 export const Toolbar: React.FC<ToolbarProps> = ({
-  activeTool,
   brushSize,
   canUndo,
-  onToolChange,
   onSizeChange,
   onUndo,
   onClear,
@@ -48,22 +44,6 @@ export const Toolbar: React.FC<ToolbarProps> = ({
 
       {/* ── ROW 1: Tools ── */}
       <View style={styles.row}>
-
-        <TouchableOpacity
-          style={[styles.toolBtn, activeTool === 'brush' && styles.activeTool]}
-          onPress={() => onToolChange('brush')}
-        >
-          <Text style={styles.toolIcon}>✏️</Text>
-          <Text style={styles.toolLabel}>Brush</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={[styles.toolBtn, activeTool === 'eraser' && styles.activeTool]}
-          onPress={() => onToolChange('eraser')}
-        >
-          <Text style={styles.toolIcon}>🧹</Text>
-          <Text style={styles.toolLabel}>Eraser</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.toolBtn, !canUndo && styles.disabledBtn]}
@@ -139,9 +119,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: '#2a2a45',
     minWidth: 70,
-  },
-  activeTool: {
-    backgroundColor: '#007AFF',
   },
   disabledBtn: {
     opacity: 0.35,
