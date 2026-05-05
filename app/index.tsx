@@ -10,10 +10,8 @@ import {
 import { DrawingCanvas } from '../components/DrawingCanvas';
 import { Stroke } from '../types/drawing';
 
-// 🌤️ Test cloud photo — replace with Firebase URL later
-const TEST_CLOUD_URL =
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/' +
-  'Cumulus_clouds_panorama.jpg/1280px-Cumulus_clouds_panorama.jpg';
+// ✅ Local image — no internet needed!
+const CLOUD_IMAGE = require('../assets/images/cloud1.jpeg');
 
 export default function HomeScreen() {
   const [submitted, setSubmitted] = useState(false);
@@ -60,10 +58,10 @@ export default function HomeScreen() {
           Draw what this cloud looks like to you
         </Text>
       </View>
-      <DrawingCanvas
-        cloudImageUrl={TEST_CLOUD_URL}
-        onSubmit={handleSubmit}
-      />
+<DrawingCanvas
+  cloudImageSource={CLOUD_IMAGE}  // ← renamed prop, local image
+  onSubmit={handleSubmit}
+/>
     </SafeAreaView>
   );
 }

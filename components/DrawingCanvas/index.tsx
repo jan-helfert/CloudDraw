@@ -45,7 +45,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CANVAS_SIZE = SCREEN_WIDTH;
 
 export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
-  cloudImageUrl,
+  cloudImageSource,  // ← renamed
   onSubmit,
 }) => {
 
@@ -203,11 +203,11 @@ export const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
 
         {/* LAYER 1: Cloud photo — React Native Image
             Handles any URL. Sits under everything. */}
-        <Image
-          source={{ uri: cloudImageUrl }}
-          style={styles.cloudImage}
-          resizeMode="cover"
-        />
+<Image
+  source={cloudImageSource}   // ← accepts both local and remote now
+  style={styles.cloudImage}
+  resizeMode="cover"
+/>
 
         {/* LAYER 2: Skia canvas — transparent, floats on top
             Only responsible for drawing strokes */}
